@@ -2,12 +2,13 @@
 body {
   font-family: Arial, sans-serif;
   background: linear-gradient(135deg, #89f7fe, #66a6ff);
-  height: 100vh;
+  min-height: 100vh; /* Sử dụng min-height để tránh bị cắt góc trên các thiết bị khác nhau */
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0;
-  padding: 10px; /* Thêm padding để tránh cắt góc khi hiển thị trên di động */
+  padding: 10px; /* Thêm padding để đảm bảo nội dung không chạm cạnh */
+  box-sizing: border-box;
 }
 
 /* Phong cách cho container mật khẩu */
@@ -17,7 +18,7 @@ body {
   padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-  max-width: 400px; /* Giới hạn chiều rộng để phù hợp với các màn hình nhỏ */
+  max-width: 90%; /* Giới hạn chiều rộng để phù hợp với các màn hình nhỏ hơn */
   width: 100%; /* Chiếm toàn bộ chiều rộng trên di động */
 }
 
@@ -55,11 +56,11 @@ button:hover {
 #letter-container {
   text-align: center;
   background: rgba(255, 255, 255, 0.8);
-  padding: 30px;
+  padding: 20px;
   border-radius: 10px;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   animation: fadeIn 1s ease-in-out;
-  max-width: 400px; /* Giới hạn chiều rộng để phù hợp với các màn hình nhỏ */
+  max-width: 90%; /* Giới hạn chiều rộng để phù hợp với các màn hình nhỏ hơn */
   width: 100%; /* Chiếm toàn bộ chiều rộng trên di động */
   margin: 20px auto; /* Canh giữa trên di động */
 }
@@ -70,14 +71,17 @@ button:hover {
 
 .letter {
   position: relative;
-  padding: 20px;
+  padding: 15px;
   border: 2px solid rgba(102, 166, 255, 0.5);
-  border-radius: 15px;
+  border-radius: 10px;
   background: rgba(255, 255, 255, 0.9);
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
   animation: slideIn 1s ease-out;
+  max-width: 100%; /* Đảm bảo không tràn ra ngoài */
+  word-wrap: break-word; /* Chia từ nếu quá dài */
 }
 
+/* Phong cách cho thông báo lỗi */
 #error-message {
   color: red;
   font-size: 14px;
@@ -108,20 +112,23 @@ button:hover {
 @media (max-width: 600px) {
   body {
     flex-direction: column; /* Điều chỉnh để hiển thị theo cột trên di động */
-    height: auto;
+    min-height: auto; /* Đảm bảo chiều cao đủ cho nội dung */
+    padding: 0 10px; /* Thêm padding để tránh cắt góc trên màn hình nhỏ */
   }
 
   #password-container,
   #letter-container {
-    padding: 20px;
+    padding: 15px;
   }
 
   .letter {
-    padding: 15px;
+    padding: 10px;
     border-radius: 10px;
+    font-size: 14px; /* Giảm kích thước chữ để phù hợp với màn hình nhỏ */
   }
 
-  input[type="password"] {
+  input[type="password"],
+  button {
     font-size: 16px;
   }
 }
