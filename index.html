@@ -16,14 +16,85 @@
         <p id="error-message"></p>
     </div>
 
-    <div id="letter-container" class="hidden">
-        <div class="letter">
-            <h1>Dear Kiều,</h1>
-            <p>Welcome to our private space. This letter contains a special message just for you.</p>
-            <p>We hope you enjoy this experience.</p>
-            <p>Sincerely,<br>The Team</p>
+  <div id="letter-container" class="hidden">
+    <style>
+        body{
+            background:#ffdde1;
+            font-family: "Segoe Script", sans-serif;
+            overflow-x: hidden;
+        }
+        .letter{
+            text-align:center;
+            padding: 20px;
+            color:#b10032;
+        }
+        h1{
+            color:#ff003c;
+            font-size: 40px;
+            text-shadow:0 0 15px white;
+        }
+        .heart {
+            position: fixed;
+            top: -10px;
+            color: #ff3f6c;
+            animation: fall 4s linear infinite;
+            font-size: 24px;
+        }
+        @keyframes fall {
+            0% {transform:translateY(-100px) translateX(0);}
+            100% {transform:translateY(110vh) translateX(40px);}
+        }
+        .img-love {
+            width: 60%;
+            border-radius:15px;
+            box-shadow: 0 0 25px #ff9bb5;
+            margin-bottom:20px;
+            animation: glow 3s infinite alternate;
+        }
+        @keyframes glow {
+            from{filter:brightness(1);}
+            to{filter:brightness(1.3);}
+        }
+        .love-text{
+            font-size: 22px;
+            background:white;
+            padding:20px;
+            border-radius:10px;
+            box-shadow: 0 0 15px #ffacc5;
+            width:80%;
+            margin:auto;
+        }
+    </style>
+
+    <div class="letter">
+        <h1>🎄 Gửi em Hương Giang thân yêu của anh 💖</h1>
+        <img src="giang.jpg" class="img-love" alt="Giang xinh">
+
+        <div class="love-text">
+            <p>Giáng Sinh này, anh chúc em</p>
+            <p><b>mùa đông thật ấm áp, hạnh phúc và bình yên.</b></p>
+            <p>Mong rằng từng ngày bên em đều là những điều ngọt ngào nhất.</p>
+            <p>Cảm ơn em đã xuất hiện và làm thế giới của anh rực rỡ hơn. ✨</p>
+            <p><b>Chúc công chúa Giang xinh đẹp một mùa Noel vui vẻ, an lành 🎁</b></p>
+            <p>Thương em nhiều… 💞</p>
         </div>
     </div>
+
+    <!-- Hiệu ứng trái tim -->
+    <script>
+        function createHeart(){
+            const heart = document.createElement("div");
+            heart.classList.add("heart");
+            heart.textContent = "💗";
+            heart.style.left = Math.random() * 100 + "vw";
+            heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+            document.body.appendChild(heart);
+            setTimeout(()=>heart.remove(),4000);
+        }
+        setInterval(createHeart,300);
+    </script>
+</div>
+
 
     <script>
         function checkPassword() {
